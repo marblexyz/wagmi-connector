@@ -1,0 +1,35 @@
+
+# Dependencies
+/node_modules
+/**/node_modules
+
+# Misc
+/.vscode
+/.idea
+.DS_Store
+
+# Test artifacts
+/**/coverage
+/**/.nyc_output
+
+# We use Yarn
+/package-lock.json
+/**/package-lock.json
+/**/yarn-error.log
+.yarn/*
+!.yarn/patches
+!.yarn/releases
+!.yarn/plugins
+!.yarn/sdks
+!.yarn/versions
+.pnp.*
+
+# Output files
+/**/dist
+
+# ENV
+.env
+
+# .yalc
+/**/.yalc
+/**/yalc.lock
