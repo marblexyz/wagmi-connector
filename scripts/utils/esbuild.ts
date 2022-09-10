@@ -9,9 +9,9 @@ import {
 import path from 'path'
 import fse from 'fs-extra'
 import { gzipSize } from 'gzip-size'
-import brotliSize from 'brotli-size'
 import prettyBytes from 'pretty-bytes'
 import chalk from 'chalk'
+import chalkTemplate from 'chalk-template'
 import { execa } from 'execa'
 import { environment } from './environment'
 import { existsAsync } from './exists-async'
@@ -44,7 +44,7 @@ export async function build(options: ESBuildOptions) {
         entryPoints: [await getEntrypoint(options.format, options.isRN)],
         sourcemap: options.sourcemap,
         outfile: options.output,
-        tsconfig: 'node_modules/.temp/tsconfig.build.json',
+        // tsconfig: 'node_modules/.temp/tsconfig.build.json',
         external: options.externals,
         loader: { '.ts': 'ts', '.tsx': 'tsx' },
         define: Object.fromEntries(
@@ -87,9 +87,9 @@ async function printOutputSizeInfo(options: ESBuildOptions) {
       outputPath,
     )
     console.log(
-      chalk`Built {rgb(0,255,255) ${options.format}} to {gray ${path.dirname(
-        options.output,
-      )}}`,
+      chalkTemplate`Built {rgb(0,255,255) ${
+        options.format
+      }} to {gray ${path.dirname(options.output)}}`,
     )
     console.log(sizeInfo)
   }
@@ -114,9 +114,9 @@ function onRebuildFactory(options: ESBuildOptions) {
 export async function emitTypes(watch?: boolean) {
   try {
     if (watch) {
-      await execa('tsc', ['-w', '-p', 'node_modules/.temp/tsconfig.build.json'])
+      await execa('tsc', ['-w', '-p', './tsconfig.json'])
     } else {
-      await execa('tsc', ['-p', 'node_modules/.temp/tsconfig.build.json'])
+      await execa('tsc', ['-p', './tsconfig.json'])
     }
   } catch (e) {
     console.error(e)
@@ -160,53 +160,6 @@ async function getEntrypoint(format?: Format, isRN?: boolean) {
 }
 
 /**
- * During the build step, we create an ephermeral "tsconfig.build.json" file
- * containing config overrides to resolve "packages/.../src" as the "rootDir".
- *
- * Why? This is our workaround to avoid tsconfig project references, which make
- * dependency association difficult to maintain in a repo this size. Using this
- * workaround, we can get the same benefits provided by tsconfig project
- * references using `paths` resolutions. However, this doesn't work when
- * actually building the libraries, so this corrects the behavior at build time.
- */
-export async function createTemporaryTSConfigFile() {
-  const baseTSConfigPath = path.resolve(
-    __dirname,
-    '../../tsconfig.settings.json',
-  )
-  const tempTSConfigPath = path.join(
-    process.cwd(),
-    'node_modules/.temp/tsconfig.build.json',
-  )
-  const relativeBaseUrl = path.relative(
-    path.dirname(tempTSConfigPath),
-    process.cwd(),
-  )
-
-  const configuration = {
-    extends: path.relative(path.dirname(tempTSConfigPath), baseTSConfigPath),
-    compilerOptions: {
-      rootDir: path.join(relativeBaseUrl, 'src'),
-      noEmit: false,
-      emitDeclarationOnly: true,
-      baseUrl: undefined,
-      declarationDir: path.join(relativeBaseUrl, 'dist/types'),
-      // Discard what's configured for "paths" inside the root
-      // "tsconfig.settings.json" file.
-      paths: {},
-    },
-    include: [
-      path.join(relativeBaseUrl, 'src/**/*.ts'),
-      path.join(relativeBaseUrl, 'src/**/*.tsx'),
-      path.join(relativeBaseUrl, 'src/**/*.js'),
-    ],
-  }
-
-  await fse.ensureDir(path.dirname(tempTSConfigPath))
-  await fse.writeJSON(tempTSConfigPath, configuration, { encoding: 'utf8' })
-}
-
-/**
  * Creates a list of plugins to replace
  * externalized packages with a global variable.
  */
@@ -235,6 +188,8 @@ function globalsPlugin(globals: Record<string, string>): Plugin[] {
 
 /**
  * Returns the GZIP and BROTLI sizes of the generated bundle.
+ *
+ * TODO: Add brotli-size support.
  */
 export async function getSizeInfo(code: string, filename: string) {
   const raw = code.length < 5000
@@ -247,11 +202,8 @@ export async function getSizeInfo(code: string, filename: string) {
     return `${color(pretty)}: ${chalk.white(path.basename(filename))}.${type}`
   }
 
-  const [gzip, brotli] = await Promise.all([
-    gzipSize(code).catch(() => null),
-    brotliSize(code).catch(() => null),
-  ])
+  const [gzip] = await Promise.all([gzipSize(code).catch(() => null)])
 
-  const out = [formatSize(gzip!, 'gz'), formatSize(brotli!, 'br')].join('\n  ')
+  const out = [formatSize(gzip!, 'gz')].join('\n  ')
   return `  ${out}`
 }

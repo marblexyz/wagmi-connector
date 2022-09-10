@@ -3,8 +3,11 @@
     "target": "esnext",
     "module": "esnext",
     "moduleResolution": "node",
+    "composite": true,
+    "noImplicitAny": true,
     "esModuleInterop": true
   },
+  "include": ["**/*.ts"],
   "ts-node": {
     "esm": true,
     "experimentalSpecifierResolution": "node"

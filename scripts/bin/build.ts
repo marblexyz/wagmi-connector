@@ -1,13 +1,11 @@
 #!/usr/bin/env ts-node-script
 
-/* eslint-disable import/no-dynamic-require */
-/* eslint-disable import/no-unresolved */
-/* eslint-disable @typescript-eslint/no-var-requires */
-/* eslint-disable global-require */
+import { createRequire } from 'module'
+const require = createRequire(import.meta.url)
 
 import pLimit from 'p-limit'
 import isCI from 'is-ci'
-import { build, createTemporaryTSConfigFile, emitTypes } from '../utils/esbuild'
+import { build, emitTypes } from '../utils/esbuild'
 import { runAsyncProcess } from '../utils/run-async-process'
 
 function getExternalsFromPkgJson(pkgJson: any): string[] {
@@ -83,41 +81,16 @@ async function cdn(watch?: boolean) {
   }
 }
 
-async function reactNativeHybridExtension(watch?: boolean) {
-  const pkgJson = require(`${process.cwd()}/package.json`)
-
-  await build({
-    watch,
-    format: 'cjs',
-    target: pkgJson.target,
-    output: pkgJson['react-native'],
-    externals: getExternalsFromPkgJson(pkgJson),
-    isRN: true,
-    sourcemap: true,
-  })
-}
-
 async function main() {
-  await createTemporaryTSConfigFile()
+  console.log('supr')
+  //   await createTemporaryTSConfigFile()
   if (process.env.DEV_SERVER) {
-    const builders = [
-      cjs(true),
-      esm(true),
-      cdn(true),
-      //   reactNativeHybridExtension(true),
-      emitTypes(true),
-    ]
+    const builders = [cjs(true), esm(true), cdn(true), emitTypes(true)]
     await Promise.all(builders)
   } else {
     // We need to limit concurrency in CI to avoid ENOMEM errors.
     const limit = pLimit(isCI ? 2 : 4)
-    const builders = [
-      limit(cjs),
-      limit(esm),
-      limit(cdn),
-      //   limit(reactNativeHybridExtension),
-      limit(emitTypes),
-    ]
+    const builders = [limit(cjs), limit(esm), limit(cdn), limit(emitTypes)]
     await Promise.all(builders)
   }
 }

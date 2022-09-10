@@ -3,13 +3,18 @@
 /* eslint-disable import/no-dynamic-require */
 
 import chalk from 'chalk'
+import chalkTemplate from 'chalk-template'
+
 import path from 'path'
+import { fileURLToPath } from 'url'
+import { createRequire } from 'module'
+
+const require = createRequire(import.meta.url)
+const __filename = fileURLToPath(import.meta.url)
+const __dirname = path.dirname(__filename)
 
 export const environment = {
-  WEB_VERSION: require(path.resolve(
-    __dirname,
-    '../../packages/marble-sdk/package.json',
-  )).version,
+  WEB_VERSION: require(path.resolve(__dirname, '../../package.json')).version,
   //   REACT_NATIVE_VERSION: require(path.resolve(
   //     __dirname,
   //     "../../packages/@marble-sdk/react-native/package.json"
@@ -19,10 +24,13 @@ export const environment = {
 export function printEnvironment() {
   console.log(
     Object.entries(environment)
-      .map(([key, value]) => chalk`{rgb(0,255,255) ${key}}{gray :} ${value}`)
+      .map(
+        ([key, value]) =>
+          chalkTemplate`{rgb(0,255,255) ${key}}{gray :} ${value}`,
+      )
       .reduce((prev, next, i) => {
-        if (i === 0) return chalk`${prev}    {gray -} ${next}`
-        return chalk`${prev}\n    {gray -} ${next}`
+        if (i === 0) return chalkTemplate`${prev}    {gray -} ${next}`
+        return chalkTemplate`${prev}\n    {gray -} ${next}`
       }, ''),
   )
 }

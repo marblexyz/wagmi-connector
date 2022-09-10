@@ -2,29 +2,70 @@
   "name": "@marblexyz/wagmi-connector",
   "version": "0.0.0",
   "description": "Marble Wagmi Connector",
-  "main": "src/index.ts",
   "author": "Superdrop Labs Inc.",
-  "license": "N/A",
   "private": false,
+  "type": "module",
+  "scripts": {
+    "build": "$INIT_CWD/scripts/bin/clean.ts && $INIT_CWD/scripts/bin/build.ts",
+    "build:all": "$INIT_CWD/scripts/bin/clean.ts && PKG='*' yarn build",
+    "clean": "$INIT_CWD/scripts/bin/clean.ts"
+  },
+  "files": [
+    "dist"
+  ],
+  "target": "browser",
+  "cdnGlobalName": "Marble",
+  "main": "dist/marblexyz-wagmi-connector.cjs.js",
+  "module": "dist/marblexyz-wagmi-connector.esm.js",
+  "types": "./dist/types/index.d.ts",
+  "jsdelivr": "./dist/marblexyz-wagmi-connector.js",
+  "exports": {
+    "import": "./dist/es/index.mjs",
+    "require": "./dist/cjs/index.js"
+  },
+  "peerDependencies": {
+    "ethers": ">=5.5.1",
+    "react": ">=17.0.0"
+  },
   "dependencies": {
-    "ethers": "^5.7.0",
     "marble-sdk": "^0.0.3",
     "wagmi": "^0.6.5"
   },
   "devDependencies": {
+    "@types/fs-extra": "^9.0.13",
+    "@types/is-ci": "^3.0.0",
     "@types/minimist": "^1.2.2",
+    "@types/p-limit": "^2.2.0",
     "chalk": "^5.0.1",
+    "chalk-template": "^0.4.0",
+    "esbuild": "^0.15.7",
+    "ethers": "^5.7.0",
     "execa": "^6.1.0",
+    "fs-extra": "^10.1.0",
+    "gzip-size": "^7.0.0",
     "is-ci": "^3.0.1",
     "minimist": "^1.2.6",
     "ora": "^6.1.2",
     "p-limit": "^4.0.0",
+    "pretty-bytes": "^6.0.0",
+    "react": "^18.2.0",
+    "react-17": "npm:react@17.0.2",
+    "react-dom": "^18.2.0",
+    "react-dom-17": "npm:react-dom@17.0.2",
     "rimraf": "^3.0.2",
     "ts-node": "^10.9.1",
     "typescript": "^4.8.3"
   },
-  "type": "module",
-  "scripts": {
-    "clean": "yarn ts-node-esm scripts/bin/clean.ts"
-  }
+  "keywords": [
+    "react",
+    "hooks",
+    "eth",
+    "ethereum",
+    "marble",
+    "dapps",
+    "wallet",
+    "web3",
+    "email",
+    "crypto"
+  ]
 }
