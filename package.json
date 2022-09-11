@@ -7,7 +7,11 @@
   "scripts": {
     "build": "$INIT_CWD/scripts/bin/clean.ts && $INIT_CWD/scripts/bin/build.ts",
     "build:all": "$INIT_CWD/scripts/bin/clean.ts && PKG='*' yarn build",
-    "clean": "$INIT_CWD/scripts/bin/clean.ts"
+    "clean": "$INIT_CWD/scripts/bin/clean.ts",
+    "lint": "yarn eslint --fix .",
+    "postinstall": "husky install",
+    "prepack": "pinst --disable",
+    "postpack": "pinst --enable"
   },
   "files": [
     "dist"
@@ -36,17 +40,26 @@
     "@types/is-ci": "^3.0.0",
     "@types/minimist": "^1.2.2",
     "@types/p-limit": "^2.2.0",
+    "@typescript-eslint/eslint-plugin": "^5.36.2",
+    "@typescript-eslint/parser": "^5.36.2",
     "chalk": "^5.0.1",
     "chalk-template": "^0.4.0",
     "esbuild": "^0.15.7",
+    "eslint": "^8.23.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-import": "^2.26.0",
     "ethers": "^5.7.0",
     "execa": "^6.1.0",
     "fs-extra": "^10.1.0",
     "gzip-size": "^7.0.0",
+    "husky": "^8.0.1",
     "is-ci": "^3.0.1",
+    "lint-staged": "^13.0.3",
     "minimist": "^1.2.6",
     "ora": "^6.1.2",
     "p-limit": "^4.0.0",
+    "pinst": "^3.0.0",
+    "prettier": "^2.7.1",
     "pretty-bytes": "^6.0.0",
     "react": "^18.2.0",
     "react-17": "npm:react@17.0.2",
@@ -68,5 +81,8 @@
     "email",
     "crypto"
   ],
-  "packageManager": "yarn@3.2.3"
+  "packageManager": "yarn@3.2.3",
+  "lint-staged": {
+    "**/*": "prettier --write --ignore-unknown"
+  }
 }
