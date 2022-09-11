@@ -29,7 +29,7 @@ yarn add marble-wagmi-connector
 Then, import the `MarbleWagmiConnector` class and instantiate it with your Marble Client Key:
 
 ```typescript
-import MarbleWagmiConnector from 'marble-wagmi-connector';
+import MarbleWagmiConnector from '@marblexyz/wagmi-connector';
 
 const marbleConnector = new MarbleWalletConnector({
     chains: chains,
@@ -45,6 +45,4 @@ const marbleConnector = new MarbleWalletConnector({
 const { connect: connectMarble } = useConnect({
 	connector: marbleConnector,
 })
-
-
 ```

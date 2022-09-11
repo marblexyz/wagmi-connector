@@ -1,0 +1,6 @@
+/node_modules
+/coverage
+/dist
+/.eslintrc.js
+/.prettierrc.js
+/jest.config.ts

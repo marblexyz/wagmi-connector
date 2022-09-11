@@ -17,13 +17,15 @@
     "sourceMap": true,
     "declaration": true,
     "skipLibCheck": true,
-    "noEmit": true,
+    "noEmit": false,
     "isolatedModules": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
-    "baseUrl": "./src"
+    "rootDir": "./src",
+    "baseUrl": "./src",
+    "declarationDir": "./dist/types",
+    "emitDeclarationOnly": true
   },
-
   "include": ["**/src/**/*.ts", "**/src/**/*.js"],
   "exclude": ["**/node_modules", "**/jest.config.ts", "**/coverage", "**/dist"]
 }

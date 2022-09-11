@@ -82,8 +82,6 @@ async function cdn(watch?: boolean) {
 }
 
 async function main() {
-  console.log('supr')
-  //   await createTemporaryTSConfigFile()
   if (process.env.DEV_SERVER) {
     const builders = [cjs(true), esm(true), cdn(true), emitTypes(true)]
     await Promise.all(builders)
