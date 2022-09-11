@@ -21,7 +21,7 @@ export class ChainNotConfiguredError extends Error {
   message = 'Chain not configured'
 }
 
-export class MarbleWalletConnector extends Connector<
+export default class MarbleWalletConnector extends Connector<
   MarbleRPCProvider,
   MarbleSDKOptions
 > {
