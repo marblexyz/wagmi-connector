@@ -147,14 +147,13 @@ export default class MarbleWalletConnector extends Connector<
         method: "wallet_switchEthereumChain",
         params: [{ chainId: id }],
       });
-      return (
-        this.chains.find((x) => x.id === chainId) ?? {
-          id: chainId,
-          name: `Chain ${id}`,
-          network: `${id}`,
-          rpcUrls: { default: "" },
-        }
-      );
+      const chain = this.chains.find((x) => x.id === chainId) ?? {
+        id: chainId,
+        name: `Chain ${id}`,
+        network: `${id}`,
+        rpcUrls: { default: "" },
+      };
+      return chain;
     } catch (error) {
       const chain = this.chains.find((x) => x.id === chainId);
       if (chain === undefined) throw new ChainNotConfiguredError();
