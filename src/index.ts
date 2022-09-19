@@ -8,6 +8,7 @@ import { getAddress, hexValue } from "ethers/lib/utils";
 import { providers } from "ethers";
 import { SwitchChainError, UserRejectedRequestError } from "./types/errors";
 import { normalizeChainId } from "./utils/utils";
+import { LoginWithEmailPasswordResult } from "@marblexyz/common";
 
 export interface MarbleSDKOptions {
   apiKey: string;
@@ -185,9 +186,11 @@ export default class MarbleWalletConnector extends Connector<
     this.emit("disconnect");
   };
 
-  public async logUserIn(email: string): Promise<boolean> {
+  public async logUserIn(
+    email?: string
+  ): Promise<LoginWithEmailPasswordResult> {
     const marbleSDK = this.getMarbleSDK();
-    const result = await marbleSDK.auth.loginWithEmailLink({ email });
-    return result?.sent ?? false;
+    const result = await marbleSDK.auth.loginWithEmailPassword({ email });
+    return result;
   }
 }
