@@ -1,0 +1,32 @@
+name: Release
+
+on:
+  push:
+    branches:
+      - dev
+
+jobs:
+  release:
+    name: Release
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          # This makes Actions fetch all Git history so that Changesets can generate changelogs with the correct commits
+          fetch-depth: 0
+      - uses: actions/checkout@v3
+      - name: Install modules
+        run: YARN_ENABLE_IMMUTABLE_INSTALLS=false yarn install
+      - name: Build modules
+        run: yarn build
+      - name: Create Release Pull Request or Publish
+        id: changesets
+        uses: changesets/action@v1
+        with:
+          title: "chore: version packages"
+          commit: "chore: version packages"
+          version: yarn changeset:version
+          publish: yarn changeset:release
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}

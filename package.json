@@ -6,12 +6,13 @@
   "type": "module",
   "scripts": {
     "build": "$INIT_CWD/scripts/bin/clean.ts && $INIT_CWD/scripts/bin/build.ts",
-    "build:all": "$INIT_CWD/scripts/bin/clean.ts && PKG='*' yarn build",
     "clean": "$INIT_CWD/scripts/bin/clean.ts",
     "lint": "yarn eslint --fix .",
     "postinstall": "husky install",
     "prepack": "pinst --disable",
-    "postpack": "pinst --enable"
+    "postpack": "pinst --enable",
+    "changeset:release": "yarn build && changeset publish",
+    "changeset:version": "changeset version && yarn install --mode=update-lockfile --no-immutable"
   },
   "files": [
     "dist"
@@ -35,6 +36,7 @@
     "wagmi": "^0.6.5"
   },
   "devDependencies": {
+    "@changesets/cli": "^2.24.4",
     "@types/chalk": "^2.2.0",
     "@types/fs-extra": "^9.0.13",
     "@types/is-ci": "^3.0.0",
