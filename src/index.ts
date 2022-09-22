@@ -196,3 +196,5 @@ export default class MarbleWalletConnector extends Connector<
     return result;
   }
 }
+
+export type { LoginWithEmailPasswordResult };
