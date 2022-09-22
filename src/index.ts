@@ -4,6 +4,8 @@ import {
   MarbleSDKAdditionalConfiguration,
   MarbleRPCProvider,
 } from "marble-sdk";
+// Adding the .js extension is required for the import to work.
+// It's not clear why
 import { getAddress, hexValue } from "ethers/lib/utils.js";
 import { providers } from "ethers";
 import { SwitchChainError, UserRejectedRequestError } from "./types/errors";

@@ -3,6 +3,6 @@
  */
 export function runAsyncProcess(fn: () => void | Promise<void>) {
   Promise.resolve(fn()).catch(() => {
-    process.exit(1)
-  })
+    process.exit(1);
+  });
 }
