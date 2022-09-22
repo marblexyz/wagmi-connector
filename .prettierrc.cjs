@@ -9,7 +9,6 @@ module.exports = {
   printWidth: 80,
   proseWrap: "preserve",
   semi: true,
-  tabWidth: 2,
   trailingComma: "es5",
   useTabs: false,
 };
