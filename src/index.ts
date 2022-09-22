@@ -4,7 +4,7 @@ import {
   MarbleSDKAdditionalConfiguration,
   MarbleRPCProvider,
 } from "marble-sdk";
-import { getAddress, hexValue } from "ethers/lib/utils";
+import { getAddress, hexValue } from "ethers/lib/utils.js";
 import { providers } from "ethers";
 import { SwitchChainError, UserRejectedRequestError } from "./types/errors";
 import { normalizeChainId } from "./utils/utils";
