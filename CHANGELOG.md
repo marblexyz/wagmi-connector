@@ -1,5 +1,12 @@
 # @marblexyz/wagmi-connector
 
+## 0.0.7
+
+### Patch Changes
+
+- 81e9ef7: Re-export LoginWithEmailPasswordResult from @marblexyz/common.
+- 2afe265: Update exports and bump marble-sdk version.
+
 ## 0.0.6
 
 ### Patch Changes
