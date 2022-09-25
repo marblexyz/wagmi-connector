@@ -10,7 +10,11 @@ import { getAddress, hexValue } from "ethers/lib/utils.js";
 import { providers } from "ethers";
 import { SwitchChainError, UserRejectedRequestError } from "./types/errors";
 import { normalizeChainId } from "./utils/utils";
-import { LoginWithEmailPasswordResult } from "@marblexyz/common";
+import {
+  LoginResultState,
+  LoginWithEmailPasswordResult,
+  SupportedNetworkType,
+} from "@marblexyz/common";
 
 export interface MarbleSDKOptions {
   apiKey: string;
@@ -198,3 +202,4 @@ export default class MarbleWalletConnector extends Connector<
 }
 
 export type { LoginWithEmailPasswordResult };
+export { LoginResultState, SupportedNetworkType };
