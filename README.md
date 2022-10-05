@@ -35,7 +35,7 @@ const marbleConnector = new MarbleWalletConnector({
   chains: chains,
   options: {
     // Custom connector options
-    apiKey: "YOUR_CLIENT_KEY",
+    clientKey: "YOUR_CLIENT_KEY",
     config: {
       endpoint: "http://localhost:4200",
     },
