@@ -1,5 +1,11 @@
 # @marblexyz/wagmi-connector
 
+## 0.1.0
+
+### Minor Changes
+
+- 2d4cc31: Rename apiKey to clientKey.
+
 ## 0.0.7
 
 ### Patch Changes
