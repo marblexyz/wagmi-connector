@@ -17,7 +17,7 @@ import {
 } from "@marblexyz/common";
 
 export interface MarbleSDKOptions {
-  apiKey: string;
+  clientKey: string;
   config: MarbleSDKAdditionalConfiguration;
 }
 
@@ -88,7 +88,7 @@ export default class MarbleWalletConnector extends Connector<
 
   getMarbleSDK(): Marble {
     if (this.marbleSDK === undefined) {
-      this.marbleSDK = new Marble(this.marbleOptions.apiKey, {
+      this.marbleSDK = new Marble(this.marbleOptions.clientKey, {
         ...this.marbleOptions.config,
       });
       return this.marbleSDK;
