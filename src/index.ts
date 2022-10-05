@@ -17,8 +17,8 @@ import {
 } from "@marblexyz/common";
 
 export interface MarbleSDKOptions {
-  clientKey: string;
-  config: MarbleSDKAdditionalConfiguration;
+  clientKey?: string;
+  config?: MarbleSDKAdditionalConfiguration;
 }
 
 export default class MarbleWalletConnector extends Connector<
