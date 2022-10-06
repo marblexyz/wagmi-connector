@@ -192,12 +192,11 @@ export default class MarbleWalletConnector extends Connector<
     this.emit("disconnect");
   };
 
-  public async logUserIn(
+  public async loginWithEmailPassword(
     email?: string
   ): Promise<LoginWithEmailPasswordResult> {
     const marbleSDK = this.getMarbleSDK();
-    const result = await marbleSDK.auth.loginWithEmailPassword({ email });
-    return result;
+    return await marbleSDK.auth.loginWithEmailPassword({ email });
   }
 }
 
