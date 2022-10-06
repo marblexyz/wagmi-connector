@@ -950,7 +950,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@marblexyz/common@npm:~0.0.10":
+"@marblexyz/common@npm:^0.0.11":
   version: 0.0.11
   resolution: "@marblexyz/common@npm:0.0.11"
   checksum: 163287d988667d4b72a8ef721077c1a7c57ed102ac7ea6a05db00454a5fed7383f4612e0db6aa4909e0508f3149a78161b728588c4f08520922bc9b185772159
@@ -5342,19 +5342,18 @@ __metadata:
   languageName: node
   linkType: hard
 
-"marble-sdk@npm:^0.0.9":
-  version: 0.0.9
-  resolution: "marble-sdk@npm:0.0.9"
+"marble-sdk@portal:../monorepo/packages/marble-sdk::locator=%40marblexyz%2Fwagmi-connector%40workspace%3A.":
+  version: 0.0.0-use.local
+  resolution: "marble-sdk@portal:../monorepo/packages/marble-sdk::locator=%40marblexyz%2Fwagmi-connector%40workspace%3A."
   dependencies:
-    "@marblexyz/common": ~0.0.10
+    "@marblexyz/common": ^0.0.11
     eventemitter3: ^4.0.7
     localforage: ^1.10.0
     localforage-driver-memory: ^1.0.5
     semver: ^7.3.7
     web3-core: ^1.7.3
-  checksum: 708d22af60fde795ca0014be0983e737fe569b925ed97cd903130b4d6249018769605247c400ae952b888a78fceba90fba1311426cf1c72525780477cf231892
   languageName: node
-  linkType: hard
+  linkType: soft
 
 "md5.js@npm:^1.3.4":
   version: 1.3.5

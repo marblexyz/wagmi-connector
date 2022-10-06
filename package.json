@@ -87,5 +87,8 @@
   "packageManager": "yarn@3.2.3",
   "lint-staged": {
     "**/*": "prettier --write --ignore-unknown"
+  },
+  "resolutions": {
+    "marble-sdk": "portal:../monorepo/packages/marble-sdk"
   }
 }
