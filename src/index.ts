@@ -23,7 +23,8 @@ export interface MarbleSDKOptions {
 
 export default class MarbleWalletConnector extends Connector<
   MarbleRPCProvider,
-  MarbleSDKOptions
+  MarbleSDKOptions,
+  providers.JsonRpcSigner
 > {
   readonly id = "marbleWallet";
   readonly name = "Marble Wallet";
