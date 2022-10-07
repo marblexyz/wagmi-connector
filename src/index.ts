@@ -17,13 +17,14 @@ import {
 } from "@marblexyz/common";
 
 export interface MarbleSDKOptions {
-  clientKey: string;
-  config: MarbleSDKAdditionalConfiguration;
+  clientKey?: string;
+  config?: MarbleSDKAdditionalConfiguration;
 }
 
 export default class MarbleWalletConnector extends Connector<
   MarbleRPCProvider,
-  MarbleSDKOptions
+  MarbleSDKOptions,
+  providers.JsonRpcSigner
 > {
   readonly id = "marbleWallet";
   readonly name = "Marble Wallet";
@@ -192,12 +193,11 @@ export default class MarbleWalletConnector extends Connector<
     this.emit("disconnect");
   };
 
-  public async logUserIn(
+  public async loginWithEmailPassword(
     email?: string
   ): Promise<LoginWithEmailPasswordResult> {
     const marbleSDK = this.getMarbleSDK();
-    const result = await marbleSDK.auth.loginWithEmailPassword({ email });
-    return result;
+    return await marbleSDK.auth.loginWithEmailPassword({ email });
   }
 }
 
