@@ -26,23 +26,34 @@ npm install --save @marblexyz/wagmi-connector
 yarn add @marblexyz/wagmi-connector
 ```
 
-Then, import the `MarbleWagmiConnector` class and instantiate it with your Marble Client Key:
+Then, import the `MarbleWalletConnector` class and instantiate it with your Marble Client Key:
 
 ```typescript
-import MarbleWagmiConnector from "@marblexyz/wagmi-connector";
+import MarbleWalletConnector from "@marblexyz/wagmi-connector";
 
 const marbleConnector = new MarbleWalletConnector({
-  chains: chains,
   options: {
-    // Custom connector options
     clientKey: "YOUR_CLIENT_KEY",
-    config: {
-      endpoint: "http://localhost:4200",
-    },
   },
 });
 
 const { connect: connectMarble } = useConnect({
   connector: marbleConnector,
 });
+```
+
+Finally, use the `connectMarble` function to connect to Marble:
+
+```typescript
+const { connect: connectMarble } = useConnect({
+  connector: marbleConnector,
+});
+
+const connect = async () => {
+  try {
+    await connectMarble();
+  } catch (error) {
+    console.error(error);
+  }
+};
 ```
