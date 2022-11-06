@@ -950,10 +950,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@marblexyz/common@npm:^0.1.0":
-  version: 0.1.0
-  resolution: "@marblexyz/common@npm:0.1.0"
-  checksum: 06f8fdfd759f78a74888ce471528b745f9a067a8ee15a1ff1d44e81fbb8a045c178ccb27fcad2c86e26af2be0cde4e7b972a9bbbe6653d162c6f04947787762a
+"@marblexyz/common@npm:^0.1.1":
+  version: 0.1.1
+  resolution: "@marblexyz/common@npm:0.1.1"
+  checksum: 9e36be7a6a277368725145bbc07e22222491870d57edfaa3bc2b3d91182568687f0326852f76bc4be5e6bc17440729b5417ba034766fb00c6962a7557666f5a5
   languageName: node
   linkType: hard
 
@@ -983,7 +983,7 @@ __metadata:
     husky: ^8.0.1
     is-ci: ^3.0.1
     lint-staged: ^13.0.3
-    marble-sdk: ^0.1.0
+    marble-sdk: ^0.1.1
     minimist: ^1.2.6
     ora: ^6.1.2
     p-limit: ^4.0.0
@@ -5342,17 +5342,17 @@ __metadata:
   languageName: node
   linkType: hard
 
-"marble-sdk@npm:^0.1.0":
-  version: 0.1.0
-  resolution: "marble-sdk@npm:0.1.0"
+"marble-sdk@npm:^0.1.1":
+  version: 0.1.1
+  resolution: "marble-sdk@npm:0.1.1"
   dependencies:
-    "@marblexyz/common": ^0.1.0
+    "@marblexyz/common": ^0.1.1
     eventemitter3: ^4.0.7
     localforage: ^1.10.0
     localforage-driver-memory: ^1.0.5
     semver: ^7.3.7
     web3-core: ^1.7.3
-  checksum: 744c19c29167c5f382d9c22ecf890539539adedf3263a3bac32fd4319b9b33353fc25ed996ac39c16406cebb955dd6c44e9e74a256929ebc0706e9afe888c32d
+  checksum: 0c700d427b7278775060495a0c12a0aafc09ced60e298640d2d73665f5cf7b4d2ecbf3c5a19c779344e37280dac3fccce2a024ef5cc6c3daeaccd9d4fbba5bf2
   languageName: node
   linkType: hard
 
