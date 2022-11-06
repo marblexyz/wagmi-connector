@@ -32,7 +32,7 @@
     "react": ">=17.0.0"
   },
   "dependencies": {
-    "marble-sdk": "^0.1.0",
+    "marble-sdk": "^0.1.1",
     "wagmi": "^0.6.5"
   },
   "devDependencies": {
