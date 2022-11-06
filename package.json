@@ -1,6 +1,6 @@
 {
   "name": "@marblexyz/wagmi-connector",
-  "version": "0.1.1",
+  "version": "0.2.0",
   "description": "Marble Wagmi Connector",
   "author": "Superdrop Labs Inc.",
   "type": "module",
