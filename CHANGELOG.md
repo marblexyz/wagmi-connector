@@ -1,5 +1,11 @@
 # @marblexyz/wagmi-connector
 
+## 0.2.3
+
+### Patch Changes
+
+- Bump marble-sdk and bump wagmi to 0.6.7
+
 ## 0.2.2
 
 ### Patch Changes
