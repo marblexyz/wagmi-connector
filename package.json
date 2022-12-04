@@ -1,6 +1,6 @@
 {
   "name": "@marblexyz/wagmi-connector",
-  "version": "0.2.2",
+  "version": "0.2.3",
   "description": "Marble Wagmi Connector",
   "author": "Superdrop Labs Inc.",
   "type": "module",
@@ -32,8 +32,8 @@
     "react": ">=17.0.0"
   },
   "dependencies": {
-    "marble-sdk": "^0.1.4",
-    "wagmi": "^0.6.5"
+    "marble-sdk": "^0.1.6",
+    "wagmi": "0.6.7"
   },
   "devDependencies": {
     "@changesets/cli": "^2.24.4",

@@ -1000,10 +1000,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@marblexyz/common@npm:^0.1.3":
-  version: 0.1.3
-  resolution: "@marblexyz/common@npm:0.1.3"
-  checksum: 7a8092ff6e4988e0275f7c595a9acebec0660eade6fd459eaaa110c3127b252099680207d34a3e0d336494d508f5b368e190cb8f303c6565fbe526c84cf002ff
+"@marblexyz/common@npm:^0.1.5":
+  version: 0.1.5
+  resolution: "@marblexyz/common@npm:0.1.5"
+  checksum: 4486ed705c4a486274109dc3f5f4697dad0b60579a9936766821b451635ca73f98f070d3bccd6352a3f2aca3722198d26f645af102ae657660ea0ae855b7adcd
   languageName: node
   linkType: hard
 
@@ -1033,7 +1033,7 @@ __metadata:
     husky: ^8.0.1
     is-ci: ^3.0.1
     lint-staged: ^13.0.3
-    marble-sdk: ^0.1.4
+    marble-sdk: ^0.1.6
     minimist: ^1.2.6
     ora: ^6.1.2
     p-limit: ^4.0.0
@@ -1047,7 +1047,7 @@ __metadata:
     rimraf: ^3.0.2
     ts-node: ^10.9.1
     typescript: ^4.8.3
-    wagmi: ^0.6.5
+    wagmi: 0.6.7
   peerDependencies:
     ethers: ">=5.5.1"
     react: ">=17.0.0"
@@ -1486,9 +1486,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@wagmi/core@npm:^0.5.5":
-  version: 0.5.5
-  resolution: "@wagmi/core@npm:0.5.5"
+"@wagmi/core@npm:^0.5.7":
+  version: 0.5.8
+  resolution: "@wagmi/core@npm:0.5.8"
   dependencies:
     eventemitter3: ^4.0.7
     zustand: ^4.0.0
@@ -1501,7 +1501,7 @@ __metadata:
       optional: true
     "@walletconnect/ethereum-provider":
       optional: true
-  checksum: cdfd9b8495030947736948288d3c0515564cb7aa7f88578e81e647523d832cea34eee5a3e9cb7ea215696486f8041923ee1cadb38cd523a1d5aee5e815bc5e4e
+  checksum: 013a4571039f555234b2fd5341a77d8908616da1159089cb875265b0d606db4b223ca40f9cf280e2c56d4e19054596b6efe6761a6ce4c26ca8420239c469bafb
   languageName: node
   linkType: hard
 
@@ -5430,18 +5430,18 @@ __metadata:
   languageName: node
   linkType: hard
 
-"marble-sdk@npm:^0.1.4":
-  version: 0.1.4
-  resolution: "marble-sdk@npm:0.1.4"
+"marble-sdk@npm:^0.1.6":
+  version: 0.1.6
+  resolution: "marble-sdk@npm:0.1.6"
   dependencies:
-    "@marblexyz/common": ^0.1.3
+    "@marblexyz/common": ^0.1.5
     ethers: ^5.7.2
     eventemitter3: ^4.0.7
     localforage: ^1.10.0
     localforage-driver-memory: ^1.0.5
     semver: ^7.3.7
     web3-core: ^1.7.3
-  checksum: 99451d2a268ff2d2f6c4ead8f2e71544532af2a0f1558e79150d4628e39c9964025167d25c0b10c1437f682e8002c749c73083928074961a9543bd5c5507ddc8
+  checksum: 4be84ae6d61ae38d68fb9bc10e41f625b48dcedcb5517b87be9c211f5e140fcd4d758d889703b31f050d7f29e2ff66ef4aca2da4af143127c6c6e79d1af6bd2c
   languageName: node
   linkType: hard
 
@@ -7573,21 +7573,21 @@ __metadata:
   languageName: node
   linkType: hard
 
-"wagmi@npm:^0.6.5":
-  version: 0.6.5
-  resolution: "wagmi@npm:0.6.5"
+"wagmi@npm:0.6.7":
+  version: 0.6.7
+  resolution: "wagmi@npm:0.6.7"
   dependencies:
     "@coinbase/wallet-sdk": ^3.3.0
     "@tanstack/query-sync-storage-persister": ^4.0.10
     "@tanstack/react-query": ^4.0.10
     "@tanstack/react-query-persist-client": ^4.0.10
-    "@wagmi/core": ^0.5.5
+    "@wagmi/core": ^0.5.7
     "@walletconnect/ethereum-provider": ^1.7.8
     use-sync-external-store: ^1.2.0
   peerDependencies:
     ethers: ">=5.5.1"
     react: ">=17.0.0"
-  checksum: b35920285fce4aad439471f83c8a9b1224e925051c2c2c7a7128a39edcb3dbe084644cb4adb852e33ea7a94f29a60d591826768867a523eedec3a794d235d470
+  checksum: 4dd9454eb2e62eee82c21aef9b30762d305497e44ea1d9623cec39262106e4f03204bfd84aa189e52a8a3c2dc4927f734365fa51deadd24c868fa6a29f05b36f
   languageName: node
   linkType: hard
 
