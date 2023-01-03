@@ -1,5 +1,11 @@
 # @marblexyz/wagmi-connector
 
+## 0.2.4
+
+### Patch Changes
+
+- Upgrade marble-sdk to support new wallet view, fund wallet modal, and add support for new relayer at app.marblewallet.com
+
 ## 0.2.3
 
 ### Patch Changes
