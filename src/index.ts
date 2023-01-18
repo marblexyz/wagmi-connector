@@ -1,4 +1,4 @@
-import { Connector, Chain, ChainNotConfiguredError } from "wagmi";
+import { Connector, Chain, ChainNotConfiguredError, Address } from "wagmi";
 import {
   Marble,
   MarbleSDKAdditionalConfiguration,
@@ -16,10 +16,12 @@ import {
   SupportedNetworkType,
 } from "@marblexyz/common";
 
-export interface MarbleSDKOptions {
-  clientKey?: string;
-  config?: MarbleSDKAdditionalConfiguration;
-}
+export type MarbleSDKOptions =
+  | {
+      clientKey?: string;
+      config?: MarbleSDKAdditionalConfiguration;
+    }
+  | undefined;
 
 export default class MarbleWalletConnector extends Connector<
   MarbleRPCProvider,
@@ -34,11 +36,11 @@ export default class MarbleWalletConnector extends Connector<
 
   private marbleSDK?: Marble;
   private provider?: MarbleRPCProvider;
-  private marbleOptions: MarbleSDKOptions;
+  private marbleOptions?: MarbleSDKOptions;
 
   constructor(config: { chains?: Chain[]; options: MarbleSDKOptions }) {
     super(config);
-    this.marbleOptions = config.options;
+    this.marbleOptions = config?.options;
   }
 
   async connect({ chainId }: { chainId?: number } = {}) {
@@ -61,12 +63,14 @@ export default class MarbleWalletConnector extends Connector<
       );
     }
     const signer = await this.getSigner();
-    const account = await signer.getAddress();
+    const address = await signer.getAddress();
 
     // TODO: Handle edge case where the user has not run DKG yet.
-    if (account === "") {
+    if (address === "") {
       throw new Error("No account found. Please run DKG first.");
     }
+
+    const account = getAddress(address);
 
     // Switch to chain if provided
     let id = await this.getChainId();
@@ -89,8 +93,8 @@ export default class MarbleWalletConnector extends Connector<
 
   getMarbleSDK(): Marble {
     if (this.marbleSDK === undefined) {
-      this.marbleSDK = new Marble(this.marbleOptions.clientKey, {
-        ...this.marbleOptions.config,
+      this.marbleSDK = new Marble(this.marbleOptions?.clientKey, {
+        ...this.marbleOptions?.config,
       });
       return this.marbleSDK;
     }
@@ -132,10 +136,10 @@ export default class MarbleWalletConnector extends Connector<
 
   async getAccount() {
     const provider = await this.getProvider();
-    const accounts = await provider.request<string[]>({
+    const accounts = await provider.request<Address[]>({
       method: "eth_accounts",
     });
-    return getAddress(<string>accounts[0]);
+    return getAddress(<Address>accounts[0]);
   }
 
   async getChainId() {
@@ -159,14 +163,23 @@ export default class MarbleWalletConnector extends Connector<
         id: chainId,
         name: `Chain ${id}`,
         network: `${id}`,
-        rpcUrls: { default: "" },
+        // TODO: Add support for nativeCurrency. Currently not supported by Marble Wallet.
+        nativeCurrency: {
+          name: "Ether",
+          decimals: 18,
+          symbol: "ETH",
+        },
+        rpcUrls: { default: { http: [""] } },
       };
       return chain;
     } catch (error) {
       const chain = this.chains.find((x) => x.id === chainId);
-      if (chain === undefined) throw new ChainNotConfiguredError();
+      if (chain === undefined)
+        throw new ChainNotConfiguredError({ chainId, connectorId: this.id });
 
       // TODO: Handle actually adding the chain to the provider. This is not currently supported.
+      // In the interim, users can add the chain manually to the Marble Wallet via the Marble
+      // MarbleSDKOptions config property.
 
       if (this.isUserRejectedError(error))
         throw new UserRejectedRequestError(error);

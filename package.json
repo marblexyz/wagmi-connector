@@ -28,12 +28,12 @@
     "require": "./dist/cjs/index.js"
   },
   "peerDependencies": {
-    "ethers": ">=5.5.1",
+    "ethers": ">=5.7.1",
     "react": ">=17.0.0"
   },
   "dependencies": {
-    "marble-sdk": "^0.1.10",
-    "wagmi": "0.6.7"
+    "marble-sdk": "^0.1.16",
+    "wagmi": "^0.10.11"
   },
   "devDependencies": {
     "@changesets/cli": "^2.24.4",

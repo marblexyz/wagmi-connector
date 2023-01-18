@@ -1,14 +1,20 @@
 # Marble Wagmi Connector
 
-This is a connector desgined to help integrate the [Marble Wallet SDK](https://www.npmjs.com/package/marble-sdk) with the wagmi React Hook library.
+This is a connector desgined to help integrate the [Marble Wallet SDK](https://www.npmjs.com/package/marble-sdk) with the [wagmi React Hook library](https://wagmi.sh/).
 
 ## What is Marble?
 
-Marble is a non-custodial wallet that lets developers onboard users into web3 quickly and securely, without the need of extensions or seed phrases.
+Marble Wallet is a self-custodial wallet that does not require extensions or seed phrases. Developers can use Marble Wallet to build seamless onboarding experiences for their users, similar to the ones provided by Coinbase or [Reddit's self-custodial wallet](https://www.coindesk.com/web3/2022/10/19/reddit-users-open-25-million-crypto-wallets-after-launch-of-nft-marketplace/).
 
-Developers use the [Marble SDK](https://www.npmjs.com/package/marble-sdk) to integrate Marble into their dApp.
+Developers can offer wallet-onboarding, a fiat on-ramp, and pre-built UI components to their users, all in a single package. Marble Wallet can improve onboarding for users to your app by up to 90%.
 
-Learn more about Marble at [marblewallet.com](https://marblewallet.com/).
+Advantages of Marble Wallet:
+
+- Email-based authentication. No seed phrases, extensions, or apps required. Marble runs in the browser.
+- Embedded fiat on-ramp.
+- Pre-built and highly customizable UI components.
+- Out-of-the-box support for WalletConnect.
+- ... and more!
 
 ## What is Wagmi?
 
