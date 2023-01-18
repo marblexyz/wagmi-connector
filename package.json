@@ -1,6 +1,6 @@
 {
   "name": "@marblexyz/wagmi-connector",
-  "version": "0.2.4",
+  "version": "0.2.5",
   "description": "Marble Wagmi Connector",
   "author": "Superdrop Labs Inc.",
   "type": "module",
@@ -11,7 +11,7 @@
     "postinstall": "husky install",
     "prepack": "pinst --disable",
     "postpack": "pinst --enable",
-    "changeset:release": "yarn build && changeset publish",
+    "changeset:release": "yarn build && changeset publish && git push --tags",
     "changeset:version": "changeset version && yarn install --mode=update-lockfile --no-immutable"
   },
   "files": [
@@ -28,12 +28,12 @@
     "require": "./dist/cjs/index.js"
   },
   "peerDependencies": {
-    "ethers": ">=5.5.1",
+    "ethers": ">=5.7.1",
     "react": ">=17.0.0"
   },
   "dependencies": {
-    "marble-sdk": "^0.1.10",
-    "wagmi": "0.6.7"
+    "marble-sdk": "^0.1.16",
+    "wagmi": "^0.10.11"
   },
   "devDependencies": {
     "@changesets/cli": "^2.24.4",
@@ -49,7 +49,7 @@
     "esbuild": "^0.15.7",
     "eslint": "^8.23.0",
     "eslint-config-prettier": "^8.5.0",
-    "eslint-plugin-import": "^2.26.0",
+    "eslint-plugin-import": "^2.27.5",
     "eslint-plugin-prettier": "^4.2.1",
     "ethers": "^5.7.0",
     "execa": "^6.1.0",
