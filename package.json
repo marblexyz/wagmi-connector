@@ -1,6 +1,6 @@
 {
   "name": "@marblexyz/wagmi-connector",
-  "version": "0.2.4",
+  "version": "0.2.5",
   "description": "Marble Wagmi Connector",
   "author": "Superdrop Labs Inc.",
   "type": "module",
@@ -11,7 +11,7 @@
     "postinstall": "husky install",
     "prepack": "pinst --disable",
     "postpack": "pinst --enable",
-    "changeset:release": "yarn build && changeset publish",
+    "changeset:release": "yarn build && changeset publish && git push --tags",
     "changeset:version": "changeset version && yarn install --mode=update-lockfile --no-immutable"
   },
   "files": [

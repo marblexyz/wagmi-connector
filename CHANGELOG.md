@@ -1,5 +1,11 @@
 # @marblexyz/wagmi-connector
 
+## 0.2.5
+
+### Patch Changes
+
+- 95c1aea: Update marble-sdk to enable self-serve, update wagmi-connector, and ethers.
+
 ## 0.2.4
 
 ### Patch Changes
