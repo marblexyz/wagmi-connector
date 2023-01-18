@@ -147,13 +147,12 @@ export default class MarbleWalletConnector extends Connector<
     const chainId = await provider.request<number>({
       method: "eth_chainId",
     });
-    return chainId;
+    return normalizeChainId(chainId);
   }
 
   async switchChain(chainId: number) {
     const provider = await this.getProvider();
     const id = hexValue(chainId);
-
     try {
       await provider.request({
         method: "wallet_switchEthereumChain",
@@ -171,6 +170,8 @@ export default class MarbleWalletConnector extends Connector<
         },
         rpcUrls: { default: { http: [""] } },
       };
+      //   Important, or else the chain will not be updated in wagmi
+      this.onChainChanged(id);
       return chain;
     } catch (error) {
       const chain = this.chains.find((x) => x.id === chainId);
