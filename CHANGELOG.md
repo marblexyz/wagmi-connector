@@ -1,5 +1,11 @@
 # @marblexyz/wagmi-connector
 
+## 0.2.6
+
+### Patch Changes
+
+- Enable preloading by default in the Marble Wagmi Connector.
+
 ## 0.2.5
 
 ### Patch Changes
