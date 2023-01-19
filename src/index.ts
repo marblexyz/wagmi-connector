@@ -20,6 +20,7 @@ export type MarbleSDKOptions =
   | {
       clientKey?: string;
       config?: MarbleSDKAdditionalConfiguration;
+      preload?: boolean;
     }
   | undefined;
 
@@ -31,6 +32,7 @@ export default class MarbleWalletConnector extends Connector<
   readonly id = "marbleWallet";
   readonly name = "Marble Wallet";
   readonly ready = false;
+  private preload = false;
 
   protected useDefaultLoginFlow = true;
 
@@ -41,6 +43,7 @@ export default class MarbleWalletConnector extends Connector<
   constructor(config: { chains?: Chain[]; options: MarbleSDKOptions }) {
     super(config);
     this.marbleOptions = config?.options;
+    this.preload = config?.options?.preload ?? true;
   }
 
   async connect({ chainId }: { chainId?: number } = {}) {
@@ -96,6 +99,9 @@ export default class MarbleWalletConnector extends Connector<
       this.marbleSDK = new Marble(this.marbleOptions?.clientKey, {
         ...this.marbleOptions?.config,
       });
+      if (this.preload) {
+        this.marbleSDK.preload();
+      }
       return this.marbleSDK;
     }
     return this.marbleSDK;
